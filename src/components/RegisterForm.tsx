@@ -146,253 +146,244 @@ export default function RegisterForm() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-180px)] grid grid-cols-1 lg:grid-cols-2">
-      <div className="hidden lg:flex panel-dark flex-col justify-center p-12 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_70%_60%,#22c55e,transparent_50%)]" />
-        <div className="relative z-10">
-          <Image src="/user-icon.png" alt="" width={56} height={56} className="mb-8" />
-          <h2 className="text-3xl font-bold mb-4">Join 1,500+ Pakistani Businesses</h2>
-          <p className="text-slate-300 leading-relaxed max-w-sm">
-            Register once and subscribe to Cattle Pro, POS Pharmacy, or additional modules as your
-            operation grows.
-          </p>
-        </div>
-      </div>
-
-      <div className="flex items-center justify-center p-6 sm:p-12 bg-brand-background">
-        <div className="auth-card w-full max-w-lg">
-          <p className="text-brand-primary font-bold text-xs tracking-[0.2em] uppercase mb-2">
-            New Account
-          </p>
+    <div className="min-h-[calc(100vh-180px)] flex items-center justify-center py-12 px-6 sm:px-10 max-w-7xl mx-auto">
+      <div className="auth-card w-full max-w-lg">
+        <div className="text-center mb-8">
+          <div className="relative w-12 h-12 mx-auto mb-4">
+            <Image src="/user-icon.png" alt="AnimalCare360 Logo" fill className="object-contain" />
+          </div>
+          <span className="text-brand-primary font-bold text-xs tracking-[0.2em] uppercase block mb-1">
+            CattlePro Portal
+          </span>
           <h1 className="text-2xl font-bold text-brand-navy mb-2">Create Your Account</h1>
-          <p className="text-brand-muted text-sm mb-8">
+          <p className="text-brand-muted text-sm">
             Free 14-day trial · No credit card required
           </p>
+        </div>
 
-          <form className="space-y-4" onSubmit={handleSubmit} noValidate>
+        <form className="space-y-4" onSubmit={handleSubmit} noValidate>
+          <div>
+            <label className="block text-sm font-semibold text-brand-navy mb-2">
+              Company / Store name <span className="text-red-500">*</span>
+            </label>
+            <div className="relative">
+              <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted" />
+              <input
+                name="companyName"
+                type="text"
+                required
+                maxLength={100}
+                autoComplete="organization"
+                onChange={handleAlphanumericInput("companyName")}
+                className={fieldClass(!!fieldErrors.companyName, true)}
+                placeholder="Letters, numbers, underscore"
+                pattern="[a-zA-Z0-9_]+"
+                aria-invalid={!!fieldErrors.companyName}
+                aria-describedby={fieldErrors.companyName ? "companyName-error" : undefined}
+              />
+            </div>
+            <FieldError message={fieldErrors.companyName} />
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-semibold text-brand-navy mb-2">
-                Company / Store name <span className="text-red-500">*</span>
-              </label>
-              <div className="relative">
-                <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted" />
-                <input
-                  name="companyName"
-                  type="text"
-                  required
-                  maxLength={100}
-                  autoComplete="organization"
-                  onChange={handleAlphanumericInput("companyName")}
-                  className={fieldClass(!!fieldErrors.companyName, true)}
-                  placeholder="Letters, numbers, underscore"
-                  pattern="[a-zA-Z0-9_]+"
-                  aria-invalid={!!fieldErrors.companyName}
-                  aria-describedby={fieldErrors.companyName ? "companyName-error" : undefined}
-                />
-              </div>
-              <FieldError message={fieldErrors.companyName} />
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-semibold text-brand-navy mb-2">
-                  First name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  name="firstName"
-                  type="text"
-                  required
-                  maxLength={50}
-                  autoComplete="given-name"
-                  onChange={handleAlphanumericInput("firstName")}
-                  className={fieldClass(!!fieldErrors.firstName)}
-                  placeholder="Letters, numbers, underscore"
-                  pattern="[a-zA-Z0-9_]+"
-                  aria-invalid={!!fieldErrors.firstName}
-                />
-                <FieldError message={fieldErrors.firstName} />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-brand-navy mb-2">
-                  Last name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  name="lastName"
-                  type="text"
-                  required
-                  maxLength={50}
-                  autoComplete="family-name"
-                  onChange={handleAlphanumericInput("lastName")}
-                  className={fieldClass(!!fieldErrors.lastName)}
-                  placeholder="Letters, numbers, underscore"
-                  pattern="[a-zA-Z0-9_]+"
-                  aria-invalid={!!fieldErrors.lastName}
-                />
-                <FieldError message={fieldErrors.lastName} />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold text-brand-navy mb-2">
-                Username <span className="text-red-500">*</span>
-              </label>
-              <div className="relative">
-                <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted" />
-                <input
-                  name="userName"
-                  type="text"
-                  required
-                  minLength={3}
-                  maxLength={30}
-                  autoComplete="username"
-                  onChange={handleAlphanumericInput("userName")}
-                  className={fieldClass(!!fieldErrors.userName, true)}
-                  placeholder="Letters, numbers, underscore"
-                  pattern="[a-zA-Z0-9_]+"
-                  aria-invalid={!!fieldErrors.userName}
-                />
-              </div>
-              <FieldError message={fieldErrors.userName} />
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold text-brand-navy mb-2">
-                Email <span className="text-red-500">*</span>
-              </label>
-              <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted" />
-                <input
-                  name="email"
-                  type="email"
-                  required
-                  maxLength={254}
-                  autoComplete="email"
-                  onChange={handleFieldChange("email")}
-                  className={fieldClass(!!fieldErrors.email, true)}
-                  placeholder="you@example.com"
-                  aria-invalid={!!fieldErrors.email}
-                />
-              </div>
-              <FieldError message={fieldErrors.email} />
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold text-brand-navy mb-2">
-                Country <span className="text-red-500">*</span>
-              </label>
-              <div className="relative">
-                <Globe className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted pointer-events-none z-10" />
-                <select
-                  name="country"
-                  required
-                  value={country}
-                  onChange={(e) => {
-                    const next = COUNTRIES.find((c) => c.name === e.target.value);
-                    if (next) setCountry(next.name);
-                    handleFieldChange("country")();
-                    if (fieldErrors.phoneNumber) clearFieldError("phoneNumber");
-                  }}
-                  className={selectClass(!!fieldErrors.country)}
-                  aria-invalid={!!fieldErrors.country}
-                >
-                  {COUNTRIES.map((c) => (
-                    <option key={c.code} value={c.name}>
-                      {c.name} (+{c.dialCode})
-                    </option>
-                  ))}
-                </select>
-                <input type="hidden" name="countryCode" value={selectedCountry.code} />
-              </div>
-              <FieldError message={fieldErrors.country} />
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold text-brand-navy mb-2">
-                Phone <span className="text-red-500">*</span>
-              </label>
-              <div className="relative flex">
-                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted z-10 pointer-events-none" />
-                <span className="input-primary !w-auto !min-w-[4.5rem] !pl-11 !pr-3 !rounded-r-none !border-r-0 shrink-0 flex items-center text-sm font-semibold text-brand-navy bg-brand-background">
-                  +{selectedCountry.dialCode}
-                </span>
-                <input
-                  name="phoneNumber"
-                  type="tel"
-                  required
-                  inputMode="numeric"
-                  autoComplete="tel-national"
-                  maxLength={selectedCountry.code === "PK" ? 11 : 15}
-                  onInput={(e) => {
-                    const input = e.currentTarget;
-                    const cleaned = input.value.replace(/\D/g, "");
-                    if (input.value !== cleaned) input.value = cleaned;
-                    handleFieldChange("phoneNumber")();
-                  }}
-                  className={`${fieldClass(!!fieldErrors.phoneNumber)} !rounded-l-none flex-1`}
-                  placeholder={selectedCountry.placeholder}
-                  aria-invalid={!!fieldErrors.phoneNumber}
-                />
-              </div>
-              <FieldError message={fieldErrors.phoneNumber} />
-              {!fieldErrors.phoneNumber && (
-                <p className="mt-1.5 text-xs text-brand-muted">
-                  {selectedCountry.code === "PK"
-                    ? "Enter 10 digits starting with 3 (e.g. 3001234567). +92 is added automatically."
-                    : `Enter national number only (no +${selectedCountry.dialCode}). Saved as 15 digits.`}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold text-brand-navy mb-2">
-                Password <span className="text-red-500">*</span>
+                First name <span className="text-red-500">*</span>
               </label>
               <input
-                name="password"
-                type="password"
+                name="firstName"
+                type="text"
                 required
-                minLength={8}
-                maxLength={128}
-                autoComplete="new-password"
-                onChange={handleFieldChange("password")}
-                className={fieldClass(!!fieldErrors.password)}
-                placeholder="Min 8 characters, letter and number"
-                aria-invalid={!!fieldErrors.password}
+                maxLength={50}
+                autoComplete="given-name"
+                onChange={handleAlphanumericInput("firstName")}
+                className={fieldClass(!!fieldErrors.firstName)}
+                placeholder="Letters, numbers, underscore"
+                pattern="[a-zA-Z0-9_]+"
+                aria-invalid={!!fieldErrors.firstName}
               />
-              <FieldError message={fieldErrors.password} />
-              {!fieldErrors.password && (
-                <p className="mt-1.5 text-xs text-brand-muted">
-                  At least 8 characters with one letter and one number.
-                </p>
-              )}
+              <FieldError message={fieldErrors.firstName} />
             </div>
+            <div>
+              <label className="block text-sm font-semibold text-brand-navy mb-2">
+                Last name <span className="text-red-500">*</span>
+              </label>
+              <input
+                name="lastName"
+                type="text"
+                required
+                maxLength={50}
+                autoComplete="family-name"
+                onChange={handleAlphanumericInput("lastName")}
+                className={fieldClass(!!fieldErrors.lastName)}
+                placeholder="Letters, numbers, underscore"
+                pattern="[a-zA-Z0-9_]+"
+                aria-invalid={!!fieldErrors.lastName}
+              />
+              <FieldError message={fieldErrors.lastName} />
+            </div>
+          </div>
 
-            {error && (
-              <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-lg px-4 py-3">
-                {error}
+          <div>
+            <label className="block text-sm font-semibold text-brand-navy mb-2">
+              Username <span className="text-red-500">*</span>
+            </label>
+            <div className="relative">
+              <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted" />
+              <input
+                name="userName"
+                type="text"
+                required
+                minLength={3}
+                maxLength={30}
+                autoComplete="username"
+                onChange={handleAlphanumericInput("userName")}
+                className={fieldClass(!!fieldErrors.userName, true)}
+                placeholder="Letters, numbers, underscore"
+                pattern="[a-zA-Z0-9_]+"
+                aria-invalid={!!fieldErrors.userName}
+              />
+            </div>
+            <FieldError message={fieldErrors.userName} />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-brand-navy mb-2">
+              Email <span className="text-red-500">*</span>
+            </label>
+            <div className="relative">
+              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted" />
+              <input
+                name="email"
+                type="email"
+                required
+                maxLength={254}
+                autoComplete="email"
+                onChange={handleFieldChange("email")}
+                className={fieldClass(!!fieldErrors.email, true)}
+                placeholder="you@example.com"
+                aria-invalid={!!fieldErrors.email}
+              />
+            </div>
+            <FieldError message={fieldErrors.email} />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-brand-navy mb-2">
+              Country <span className="text-red-500">*</span>
+            </label>
+            <div className="relative">
+              <Globe className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted pointer-events-none z-10" />
+              <select
+                name="country"
+                required
+                value={country}
+                onChange={(e) => {
+                  const next = COUNTRIES.find((c) => c.name === e.target.value);
+                  if (next) setCountry(next.name);
+                  handleFieldChange("country")();
+                  if (fieldErrors.phoneNumber) clearFieldError("phoneNumber");
+                }}
+                className={selectClass(!!fieldErrors.country)}
+                aria-invalid={!!fieldErrors.country}
+              >
+                {COUNTRIES.map((c) => (
+                  <option key={c.code} value={c.name}>
+                    {c.name} (+{c.dialCode})
+                  </option>
+                ))}
+              </select>
+              <input type="hidden" name="countryCode" value={selectedCountry.code} />
+            </div>
+            <FieldError message={fieldErrors.country} />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-brand-navy mb-2">
+              Phone <span className="text-red-500">*</span>
+            </label>
+            <div className="relative flex">
+              <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted z-10 pointer-events-none" />
+              <span className="input-primary !w-auto !min-w-[4.5rem] !pl-11 !pr-3 !rounded-r-none !border-r-0 shrink-0 flex items-center text-sm font-semibold text-brand-navy bg-brand-background">
+                +{selectedCountry.dialCode}
+              </span>
+              <input
+                name="phoneNumber"
+                type="tel"
+                required
+                inputMode="numeric"
+                autoComplete="tel-national"
+                maxLength={selectedCountry.code === "PK" ? 11 : 15}
+                onInput={(e) => {
+                  const input = e.currentTarget;
+                  const cleaned = input.value.replace(/\D/g, "");
+                  if (input.value !== cleaned) input.value = cleaned;
+                  handleFieldChange("phoneNumber")();
+                }}
+                className={`${fieldClass(!!fieldErrors.phoneNumber)} !rounded-l-none flex-1`}
+                placeholder={selectedCountry.placeholder}
+                aria-invalid={!!fieldErrors.phoneNumber}
+              />
+            </div>
+            <FieldError message={fieldErrors.phoneNumber} />
+            {!fieldErrors.phoneNumber && (
+              <p className="mt-1.5 text-xs text-brand-muted">
+                {selectedCountry.code === "PK"
+                  ? "Enter 10 digits starting with 3 (e.g. 3001234567). +92 is added automatically."
+                  : `Enter national number only (no +${selectedCountry.dialCode}). Saved as 15 digits.`}
               </p>
             )}
-            {success && (
-              <p className="text-sm text-green-700 bg-green-50 border border-green-100 rounded-lg px-4 py-3">
-                {success}
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-brand-navy mb-2">
+              Password <span className="text-red-500">*</span>
+            </label>
+            <input
+              name="password"
+              type="password"
+              required
+              minLength={8}
+              maxLength={128}
+              autoComplete="new-password"
+              onChange={handleFieldChange("password")}
+              className={fieldClass(!!fieldErrors.password)}
+              placeholder="Min 8 characters, letter and number"
+              aria-invalid={!!fieldErrors.password}
+            />
+            <FieldError message={fieldErrors.password} />
+            {!fieldErrors.password && (
+              <p className="mt-1.5 text-xs text-brand-muted">
+                At least 8 characters with one letter and one number.
               </p>
             )}
-            <button
-              type="submit"
-              disabled={loading}
-              className="btn-primary w-full !py-3.5 text-base mt-2 disabled:opacity-60"
-            >
-              {loading ? "Creating account..." : "Create Account & Continue"}
-            </button>
-          </form>
+          </div>
 
-          <p className="text-center text-sm text-brand-muted mt-8 pt-6 border-t border-brand-border">
-            Already registered?{" "}
-            <Link href="/login" className="text-brand-primary font-bold hover:underline">
-              Sign in
-            </Link>
-          </p>
-        </div>
+          {error && (
+            <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-lg px-4 py-3">
+              {error}
+            </p>
+          )}
+          {success && (
+            <p className="text-sm text-green-700 bg-green-50 border border-green-100 rounded-lg px-4 py-3">
+              {success}
+            </p>
+          )}
+          <button
+            type="submit"
+            disabled={loading}
+            className="btn-primary w-full !py-3.5 text-base mt-2 disabled:opacity-60"
+          >
+            {loading ? "Creating account..." : "Create Account & Continue"}
+          </button>
+        </form>
+
+        <p className="text-center text-sm text-brand-muted mt-8 pt-6 border-t border-brand-border">
+          Already registered?{" "}
+          <Link href="/login" className="text-brand-primary font-bold hover:underline">
+            Sign in
+          </Link>
+        </p>
       </div>
     </div>
   );

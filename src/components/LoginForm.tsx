@@ -57,85 +57,71 @@ export default function LoginForm() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-180px)] grid grid-cols-1 lg:grid-cols-2">
-      <div className="hidden lg:flex panel-dark flex-col justify-center p-12 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_40%,#22c55e,transparent_60%)]" />
-        <div className="relative z-10">
-          <Image src="/user-icon.png" alt="" width={56} height={56} className="mb-8" />
-          <h2 className="text-3xl font-bold mb-4">Secure Business Access</h2>
-          <p className="text-slate-300 leading-relaxed max-w-sm">
-            Sign in to manage subscriptions, deploy ERP modules, and access your AnimalCare360
-            enterprise dashboard.
-          </p>
-          <ul className="mt-10 space-y-3 text-sm text-slate-400">
-            <li>✓ Multi-branch cloud sync</li>
-            <li>✓ FBR-compliant billing</li>
-            <li>✓ 14-day free trial on all modules</li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="flex items-center justify-center p-6 sm:p-12 bg-brand-background">
-        <div className="auth-card w-full max-w-md">
-          <p className="text-brand-primary font-bold text-xs tracking-[0.2em] uppercase mb-2">
-            Account Access
-          </p>
+    <div className="min-h-[calc(100vh-180px)] flex items-center justify-center py-12 px-6 sm:px-10 max-w-7xl mx-auto">
+      <div className="auth-card w-full max-w-md">
+        <div className="text-center mb-8">
+          <div className="relative w-12 h-12 mx-auto mb-4">
+            <Image src="/user-icon.png" alt="AnimalCare360 Logo" fill className="object-contain" />
+          </div>
+          <span className="text-brand-primary font-bold text-xs tracking-[0.2em] uppercase block mb-1">
+            CattlePro Portal
+          </span>
           <h1 className="text-2xl font-bold text-brand-navy mb-2">Sign In</h1>
-          <p className="text-brand-muted text-sm mb-8">
-            Enter your credentials to continue to checkout
-          </p>
-
-          <form className="space-y-5" onSubmit={handleSubmit}>
-            <div>
-              <label className="block text-sm font-semibold text-brand-navy mb-2">
-                Username or email
-              </label>
-              <div className="relative">
-                <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted" />
-                <input
-                  name="username"
-                  type="text"
-                  required
-                  className="input-primary !pl-11"
-                  autoComplete="username"
-                  placeholder="Username or email"
-                />
-              </div>
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-brand-navy mb-2">Password</label>
-              <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted" />
-                <input
-                  name="password"
-                  type="password"
-                  required
-                  className="input-primary !pl-11"
-                  placeholder="Enter password"
-                />
-              </div>
-            </div>
-            {error && (
-              <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-lg px-4 py-3">
-                {error}
-              </p>
-            )}
-            <button
-              type="submit"
-              disabled={loading}
-              className="btn-primary w-full !py-3.5 text-base disabled:opacity-60"
-            >
-              {loading ? "Signing in..." : "Sign In to Portal"}
-            </button>
-          </form>
-
-          <p className="text-center text-sm text-brand-muted mt-8 pt-6 border-t border-brand-border">
-            Don&apos;t have an account?{" "}
-            <Link href="/register" className="text-brand-primary font-bold hover:underline">
-              Create free account
-            </Link>
+          <p className="text-brand-muted text-sm">
+            Enter your credentials to continue to simulator explorer
           </p>
         </div>
+
+        <form className="space-y-5" onSubmit={handleSubmit}>
+          <div>
+            <label className="block text-sm font-semibold text-brand-navy mb-2">
+              Username or email
+            </label>
+            <div className="relative">
+              <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted" />
+              <input
+                name="username"
+                type="text"
+                required
+                className="input-primary !pl-11"
+                autoComplete="username"
+                placeholder="Username or email"
+              />
+            </div>
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-brand-navy mb-2">Password</label>
+            <div className="relative">
+              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted" />
+              <input
+                name="password"
+                type="password"
+                required
+                className="input-primary !pl-11"
+                placeholder="Enter password"
+              />
+            </div>
+          </div>
+          {error && (
+            <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-lg px-4 py-3">
+              {error}
+            </p>
+          )}
+          <button
+            type="submit"
+            disabled={loading}
+            className="btn-primary w-full !py-3.5 text-base disabled:opacity-60"
+          >
+            {loading ? "Signing in..." : "Sign In to Portal"}
+          </button>
+        </form>
+
+        <p className="text-center text-sm text-brand-muted mt-8 pt-6 border-t border-brand-border">
+          Don&apos;t have an account?{" "}
+          <Link href="/register" className="text-brand-primary font-bold hover:underline">
+            Create free account
+          </Link>
+        </p>
       </div>
     </div>
   );

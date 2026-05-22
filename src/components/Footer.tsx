@@ -17,7 +17,7 @@ export default function Footer() {
           </a>
           <div className="flex flex-wrap gap-8 text-sm text-brand-muted font-medium">
             <Link href="/" className="hover:text-brand-navy transition-colors">Explore CattlePro</Link>
-            <Link href="/login" className="hover:text-brand-navy transition-colors">Login</Link>
+            <Link href="/login" className="hover:text-brand-navy transition-colors">Sign In</Link>
             <Link href="/register" className="hover:text-brand-navy transition-colors">Register</Link>
             <a href="https://animalcare360.com" className="hover:text-brand-navy transition-colors">
               Marketing Site

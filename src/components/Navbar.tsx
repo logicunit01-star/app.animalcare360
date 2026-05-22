@@ -10,7 +10,6 @@ import { LayoutGrid, LogIn, UserPlus, LayoutDashboard } from "lucide-react";
 
 const publicLinks = [
   { name: "Explore CattlePro", href: "/", icon: LayoutGrid },
-  { name: "Login", href: "/login", icon: LogIn },
   { name: "Register", href: "/register", icon: UserPlus },
 ];
 
