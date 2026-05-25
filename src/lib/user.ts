@@ -4,6 +4,7 @@ export const USER_CREATE_URL = "https://api.hulmsolutions.com/user/create";
 export const USER_LOGIN_URL = "https://api.hulmsolutions.com/user/login";
 export const USER_ME_URL = "https://api.hulmsolutions.com/user/me";
 export const USER_SEND_VERIFICATION_URL = "https://api.hulmsolutions.com/user/send-verification-link";
+export const USER_FORGOT_PASSWORD_URL = "https://api.hulmsolutions.com/user/forgot-password";
 
 /** Fixed for AnimalCare360 portal registrations */
 export const REGISTER_ACCOUNT_TYPE = "BUSSINESS";
@@ -234,4 +235,16 @@ export async function sendVerificationLink(email: string): Promise<HulmApiRespon
   const data = await parseHulmResponse(res);
   assertHulmSuccess(data, res, "Unable to send verification email.");
   return normalizeHulmResponse(data, res, "Verification link sent successfully");
+}
+
+export async function forgotPassword(email: string): Promise<HulmApiResponse> {
+  const res = await hulmFetch(USER_FORGOT_PASSWORD_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email: email.trim() }),
+  });
+
+  const data = await parseHulmResponse(res);
+  assertHulmSuccess(data, res, "Unable to request password reset.");
+  return normalizeHulmResponse(data, res, "If an account with that email exists, you will receive a password reset link.");
 }

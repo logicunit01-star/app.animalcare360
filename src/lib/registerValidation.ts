@@ -68,10 +68,10 @@ export function validateRegisterForm(values: RegisterFormValues): RegisterValida
   const countryName = values.country.trim();
   const password = values.password;
 
-  const companyRequired = required(companyName, "Company name");
+  const companyRequired = required(companyName, "Business name");
   if (companyRequired) errors.companyName = companyRequired;
-  else if (companyName.length < 2) errors.companyName = "Company name must be at least 2 characters.";
-  else if (companyName.length > 100) errors.companyName = "Company name must be 100 characters or less.";
+  else if (companyName.length < 2) errors.companyName = "Business name must be at least 2 characters.";
+  else if (companyName.length > 100) errors.companyName = "Business name must be 100 characters or less.";
   else if (!COMPANY_RE.test(companyName)) {
     errors.companyName = "Use letters, numbers, and underscore only (no spaces or other special characters).";
   }
