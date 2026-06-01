@@ -132,7 +132,7 @@ export default function LoginForm() {
                 required
                 className="input-primary !pl-11"
                 autoComplete="username"
-                placeholder="Username or email"
+                placeholder="e.g. user@example.com or username"
               />
             </div>
           </div>
@@ -159,7 +159,7 @@ export default function LoginForm() {
                 type="password"
                 required
                 className="input-primary !pl-11"
-                placeholder="Enter password"
+                placeholder="••••••••"
               />
             </div>
           </div>
@@ -218,7 +218,7 @@ export default function LoginForm() {
                     if (forgotError) setForgotError("");
                   }}
                   className="input-primary"
-                  placeholder="Enter registered email"
+                  placeholder="e.g. user@example.com"
                   disabled={forgotLoading}
                 />
               </div>

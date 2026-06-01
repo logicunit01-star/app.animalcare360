@@ -178,7 +178,7 @@ export default function RegisterForm() {
                 autoComplete="organization"
                 onChange={handleAlphanumericInput("companyName")}
                 className={fieldClass(!!fieldErrors.companyName, true)}
-                placeholder="Business Name (Letters, numbers, underscore)"
+                placeholder="e.g. Alpha Farms"
                 pattern="[a-zA-Z0-9_]+"
                 aria-invalid={!!fieldErrors.companyName}
                 aria-describedby={fieldErrors.companyName ? "companyName-error" : undefined}
@@ -200,7 +200,7 @@ export default function RegisterForm() {
                 autoComplete="given-name"
                 onChange={handleAlphanumericInput("firstName")}
                 className={fieldClass(!!fieldErrors.firstName)}
-                placeholder="Letters, numbers, underscore"
+                placeholder="e.g. Muhammad"
                 pattern="[a-zA-Z0-9_]+"
                 aria-invalid={!!fieldErrors.firstName}
               />
@@ -218,7 +218,7 @@ export default function RegisterForm() {
                 autoComplete="family-name"
                 onChange={handleAlphanumericInput("lastName")}
                 className={fieldClass(!!fieldErrors.lastName)}
-                placeholder="Letters, numbers, underscore"
+                placeholder="e.g. Ali"
                 pattern="[a-zA-Z0-9_]+"
                 aria-invalid={!!fieldErrors.lastName}
               />
@@ -241,7 +241,7 @@ export default function RegisterForm() {
                 autoComplete="username"
                 onChange={handleAlphanumericInput("userName")}
                 className={fieldClass(!!fieldErrors.userName, true)}
-                placeholder="Letters, numbers, underscore"
+                placeholder="e.g. ali_raza"
                 pattern="[a-zA-Z0-9_]+"
                 aria-invalid={!!fieldErrors.userName}
               />
@@ -263,7 +263,7 @@ export default function RegisterForm() {
                 autoComplete="email"
                 onChange={handleFieldChange("email")}
                 className={fieldClass(!!fieldErrors.email, true)}
-                placeholder="you@example.com"
+                placeholder="e.g. you@example.com"
                 aria-invalid={!!fieldErrors.email}
               />
             </div>
@@ -350,7 +350,7 @@ export default function RegisterForm() {
               autoComplete="new-password"
               onChange={handleFieldChange("password")}
               className={fieldClass(!!fieldErrors.password)}
-              placeholder="Min 8 characters, letter and number"
+              placeholder="••••••••"
               aria-invalid={!!fieldErrors.password}
             />
             <FieldError message={fieldErrors.password} />
