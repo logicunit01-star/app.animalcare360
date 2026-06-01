@@ -73,15 +73,7 @@ export default function RegisterForm() {
     };
   }
 
-  function handleAlphanumericSpaceInput(field: RegisterField) {
-    return (e: ChangeEvent<HTMLInputElement>) => {
-      const cleaned = e.target.value.replace(/[^a-zA-Z0-9_ ]/g, "");
-      if (e.target.value !== cleaned) {
-        e.target.value = cleaned;
-      }
-      handleFieldChange(field)();
-    };
-  }
+
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -95,24 +87,10 @@ export default function RegisterForm() {
     const countryMeta = getCountryByCode(countryCode) ?? selectedCountry;
     const rawPhone = String(form.get("phoneNumber") ?? "").trim();
 
-    // Split Full Name into First Name and Last Name
-    const fullNameRaw = String(form.get("fullName") ?? "").trim();
-    const parts = fullNameRaw.split(/\s+/).filter(Boolean);
-    const firstName = parts[0] ?? "";
-    const lastName = parts.slice(1).join("_") || "";
-
-    if (parts.length < 2) {
-      setFieldErrors({
-        firstName: "Please enter your full name (first and last name separated by space).",
-      });
-      setError("Please enter your full name (first and last name).");
-      return;
-    }
-
     const values: RegisterFormValues = {
       companyName: (form.get("companyName") as string)?.trim() ?? "",
-      firstName,
-      lastName,
+      firstName: (form.get("firstName") as string)?.trim() ?? "",
+      lastName: (form.get("lastName") as string)?.trim() ?? "",
       userName: (form.get("userName") as string)?.trim() ?? "",
       email: (form.get("email") as string)?.trim() ?? "",
       phoneNumber: rawPhone,
@@ -209,25 +187,43 @@ export default function RegisterForm() {
             <FieldError message={fieldErrors.companyName} />
           </div>
 
-          <div>
-            <label className="block text-sm font-semibold text-brand-navy mb-2">
-              Full name <span className="text-red-500">*</span>
-            </label>
-            <div className="relative">
-              <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted" />
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-semibold text-brand-navy mb-2">
+                First name <span className="text-red-500">*</span>
+              </label>
               <input
-                name="fullName"
+                name="firstName"
                 type="text"
                 required
-                maxLength={100}
-                autoComplete="name"
-                onChange={handleAlphanumericSpaceInput("firstName")}
-                className={fieldClass(!!fieldErrors.firstName || !!fieldErrors.lastName, true)}
-                placeholder="First and Last name (e.g. John Doe)"
-                aria-invalid={!!fieldErrors.firstName || !!fieldErrors.lastName}
+                maxLength={50}
+                autoComplete="given-name"
+                onChange={handleAlphanumericInput("firstName")}
+                className={fieldClass(!!fieldErrors.firstName)}
+                placeholder="Letters, numbers, underscore"
+                pattern="[a-zA-Z0-9_]+"
+                aria-invalid={!!fieldErrors.firstName}
               />
+              <FieldError message={fieldErrors.firstName} />
             </div>
-            <FieldError message={fieldErrors.firstName || fieldErrors.lastName} />
+            <div>
+              <label className="block text-sm font-semibold text-brand-navy mb-2">
+                Last name <span className="text-red-500">*</span>
+              </label>
+              <input
+                name="lastName"
+                type="text"
+                required
+                maxLength={50}
+                autoComplete="family-name"
+                onChange={handleAlphanumericInput("lastName")}
+                className={fieldClass(!!fieldErrors.lastName)}
+                placeholder="Letters, numbers, underscore"
+                pattern="[a-zA-Z0-9_]+"
+                aria-invalid={!!fieldErrors.lastName}
+              />
+              <FieldError message={fieldErrors.lastName} />
+            </div>
           </div>
 
           <div>
